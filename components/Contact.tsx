@@ -64,9 +64,9 @@ export function Contact() {
             Let&apos;s work together
           </h2>
           <p className="text-gray-400 text-sm max-w-md mx-auto mb-10">
-            I&apos;m actively looking for full-stack and AI engineering roles at
+            {/*I&apos;m actively looking for full-stack and AI engineering roles at
             startups. If you&apos;re building something interesting, I&apos;d
-            love to hear about it.
+            love to hear about it.*/}
           </p>
         </div>
 
@@ -95,4 +95,3 @@ export function Contact() {
     </section>
   );
 }
-

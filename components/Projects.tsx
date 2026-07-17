@@ -20,11 +20,11 @@ const projects: Project[] = [
     title: "Coffee Brew Tracker & AI Assistant",
     status: "in-progress",
     description:
-      "A personal full-stack tool designed for tracking and analysing pour-over coffee brews. Logs brew parameters — grind size, water temperature, coffee-to-water ratio, and brew time — alongside taste ratings and tasting notes. Features a local AI 'Brew Assistant' to suggest adjustments for the next cup.",
+      "A personal full-stack tool designed for tracking and analysing pour-over coffee brews. Logs brew parameters such as grind size, water temperature, coffee-to-water ratio, brew time, taste ratings and tasting notes. Features a local AI 'Brew Assistant' to suggest adjustments for the next cup.",
     highlights: [
-      "Local AI Inference — Integrated LangChain & Ollama (Gemma3) for privacy-conscious brew optimization based on historical taste profiles.",
-      "Asynchronous Backend — Built with FastAPI & SQLAlchemy Async for non-blocking database operations and high-concurrency performance.",
-      "Data-Driven Insights — Real-time visualization of parameter correlations (grind size vs. rating) using Recharts and Next.js Server Components.",
+      "Local AI Inference, integrating LangChain & Ollama (Gemma3) for privacy-conscious brew optimization based on historical taste profiles.",
+      "Asynchronous Backend built with FastAPI & SQLAlchemy Async for non-blocking database operations and high-concurrency performance.",
+      "Data-Driven Insights with real-time visualization of parameter correlations (grind size vs. rating) using Recharts and Next.js Server Components.",
     ],
     tags: [
       "FastAPI",
@@ -46,7 +46,7 @@ const projects: Project[] = [
     description:
       "A full-stack AI-powered analytics platform for e-commerce businesses. Features a real-time dashboard with KPI cards and revenue charts, an AI chat assistant that converts natural language to SQL queries using a local LLM, and a Prophet-powered 30-day revenue forecasting engine with confidence intervals.",
     highlights: [
-      "AI chat assistant — natural language to SQL via LangChain + Ollama",
+      "AI chat assistant works with natural language to SQL via LangChain + Ollama",
       "Prophet forecasting with 80% confidence intervals",
       "Async FastAPI backend with SQLAlchemy + PostgreSQL",
       "Next.js 14 dashboard with Recharts visualisations",
