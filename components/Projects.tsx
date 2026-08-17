@@ -132,7 +132,7 @@ export function Projects() {
                 </div>
 
                 {/* 3. Description */}
-                <p className="text-gray-400 text-[15px] leading-relaxed mb-6 font-medium max-w-2xl">
+                <p className="text-gray-400 text-s leading-relaxed mb-6 font-medium max-w-2xl">
                   {project.description}
                 </p>
 
@@ -141,7 +141,7 @@ export function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-md text-[10px] font-bold tracking-wider bg-[#2d1a12] text-[#ef8e52] border border-[#ef8e52]/10"
+                      className="px-3 py-1 rounded-md text-xs font-bold tracking-wider bg-[#2d1a12] text-[#ef8e52] border border-[#ef8e52]/10"
                     >
                       {tag}
                     </span>
