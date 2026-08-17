@@ -20,7 +20,7 @@ const projects: Project[] = [
   {
     title: "Coffee Brew Tracker & AI Assistant",
     status: "in-progress",
-    image: "/images/Brew_tracker_app.png",
+    image: "/images/Brew_app.png",
     description:
       "A personal full-stack tool designed for tracking and analysing pour-over coffee brews. Logs parameters like grind size and water temperature, featuring a local AI assistant to suggest adjustments for the next cup.",
     highlights: [
