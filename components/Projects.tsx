@@ -20,7 +20,7 @@ const projects: Project[] = [
   {
     title: "Coffee Brew Tracker & AI Assistant",
     status: "in-progress",
-    image: "/images/Brew_app.png",
+    image: "/images/brew_app.png",
     description:
       "A personal full-stack tool designed for tracking and analysing pour-over coffee brews. Logs parameters like grind size and water temperature, featuring a local AI assistant to suggest adjustments for the next cup.",
     highlights: [
@@ -141,7 +141,7 @@ export function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 rounded-md text-[10px] font-bold tracking-wider bg-[#2d1a12] text-[#ef8e52] border border-[#ef8e52]/10 uppercase"
+                      className="px-3 py-1 rounded-md text-[10px] font-bold tracking-wider bg-[#2d1a12] text-[#ef8e52] border border-[#ef8e52]/10"
                     >
                       {tag}
                     </span>
