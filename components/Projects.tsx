@@ -1,6 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import Image from "next/image";
 
 type ProjectStatus = "completed" | "in-progress";
 
@@ -10,6 +11,7 @@ interface Project {
   description: string;
   highlights: string[];
   tags: string[];
+  image: string;
   tagColor: string;
   github?: string;
   demo?: string;
@@ -26,6 +28,7 @@ const projects: Project[] = [
       "Asynchronous Backend built with FastAPI & SQLAlchemy Async for non-blocking database operations and high-concurrency performance.",
       "Data-Driven Insights with real-time visualization of parameter correlations (grind size vs. rating) using Recharts and Next.js Server Components.",
     ],
+    image: "/images/Brew_tracker_app.png",
     tags: [
       "FastAPI",
       "Next.js 14",
@@ -51,6 +54,7 @@ const projects: Project[] = [
       "Async FastAPI backend with SQLAlchemy + PostgreSQL",
       "Next.js 14 dashboard with Recharts visualisations",
     ],
+    image: "",
     tags: [
       "FastAPI",
       "Next.js 14",
@@ -74,6 +78,7 @@ const projects: Project[] = [
       "User authentication and role-based access",
       "Deployed on AWS RDS + S3 + SES",
     ],
+    image: "",
     tags: ["Django", "MySQL", "AWS RDS", "AWS S3", "AWS SES", "HTML/CSS/JS"],
     tagColor: "bg-gray-800 text-gray-300 border-gray-700",
   },
