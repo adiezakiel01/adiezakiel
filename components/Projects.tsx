@@ -83,7 +83,7 @@ export function Projects() {
   const projectRefs = [ref1, ref2, ref3];
 
   return (
-    <section id="projects" className="py-24 px-6 bg-[#0c0c0e]">
+    <section id="projects" className="py-24 px-6 bg-[#06102e]">
       <div className="max-w-3xl mx-auto">
         <div ref={headingRef} className="reveal mb-16">
           <p className="text-violet-500 text-xs font-bold tracking-[0.2em] uppercase mb-2">
