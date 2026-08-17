@@ -35,7 +35,7 @@ const projects: Project[] = [
   {
     title: "E-Commerce AI Analytics Platform",
     status: "completed",
-    image: "/images/profile.jpg", // Update with your ecommerce screenshot
+    image: "/images/ecom.png",
     description:
       "Full-stack AI analytics for e-commerce. Features a real-time dashboard and an AI chat assistant that converts natural language to SQL queries using a local LLM.",
     highlights: [
@@ -49,7 +49,7 @@ const projects: Project[] = [
   {
     title: "Business Intelligence Dashboard",
     status: "completed",
-    image: "/images/Brew_tracker_app.png", // Update with your BI screenshot
+    image: "/images/iora_dashboard.png",
     description:
       "A comprehensive BI dashboard built as a university capstone project. Features interactive data visualisations, user authentication, and real-time analytics deployed on AWS.",
     highlights: [
