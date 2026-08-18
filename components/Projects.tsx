@@ -88,7 +88,7 @@ export function Projects() {
   const cardsRef = useScrollReveal(100);
 
   return (
-    <section id="projects" className="py-24 px-6">
+    <section id="projects" className="py-24 px-6 bg-[#0A0820]">
       <div className="max-w-6xl mx-auto">
         <div ref={headingRef} className="reveal mb-10">
           <p className="text-violet-400 text-xs font-semibold tracking-widest uppercase mb-2">
