@@ -54,7 +54,7 @@ export function About() {
             {/* Top Row: Location & Status */}
             <div className="flex gap-3">
               <div className={`${subtleTile} flex-1 py-4`}>
-                <span className="text-[10px] uppercase tracking-widest text-violet-400/50 mb-1 font-bold">
+                <span className="text-[10px] uppercase tracking-widest text-violet-400 mb-1 font-bold">
                   Based in
                 </span>
                 <span className="text-sm text-gray-200 font-medium tracking-tight">
@@ -62,7 +62,7 @@ export function About() {
                 </span>
               </div>
               <div className={`${subtleTile} flex-1 py-4`}>
-                <span className="text-[10px] uppercase tracking-widest text-violet-400/50 mb-1 font-bold">
+                <span className="text-[10px] uppercase tracking-widest text-violet-400 mb-1 font-bold">
                   Status
                 </span>
                 <span className="text-sm text-emerald-400/90 font-medium tracking-tight">
@@ -73,7 +73,7 @@ export function About() {
 
             {/* Middle Row: Education (Integrated Design) */}
             <div className={`${subtleTile} py-4`}>
-              <span className="text-[10px] uppercase tracking-widest text-violet-400/50 mb-1 font-bold">
+              <span className="text-[10px] uppercase tracking-widest text-violet-400 mb-1 font-bold">
                 Education
               </span>
               <span className="text-sm text-gray-200 font-medium leading-tight tracking-tight">
