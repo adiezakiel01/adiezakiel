@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -87,68 +88,61 @@ export function Projects() {
   const headingRef = useScrollReveal();
   const cardsRef = useScrollReveal(100);
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const progress = (scrollLeft / (scrollWidth - clientWidth)) * 100;
+      setScrollProgress(progress);
+    }
+  };
+
+  useEffect(() => {
+    handleScroll();
+    window.addEventListener("resize", handleScroll);
+    return () => window.removeEventListener("resize", handleScroll);
+  }, []);
+
   return (
     <section id="projects" className="py-24 px-6 bg-[#0A0820]">
-      <div className="max-w-6xl mx-auto">
-        <div ref={headingRef} className="reveal mb-10">
-          <p className="text-violet-400 text-xs font-semibold tracking-widest uppercase mb-2">
-            Projects
+      <div className="max-w-4xl mx-auto">
+        {/* Header - Synchronized with About section */}
+        <div ref={headingRef} className="reveal mb-12">
+          <p className="text-violet-400 text-[10px] font-bold tracking-[0.2em] uppercase mb-3 opacity-90">
+            Portfolio
           </p>
-          <h2 className="text-3xl font-bold text-white">
+          <h2 className="text-3xl font-bold text-white tracking-tight">
             What I&apos;ve built
           </h2>
         </div>
 
         <div ref={cardsRef} className="reveal">
+          {/* Horizontal Scroll Container */}
           <div
-            className="flex gap-5 overflow-x-auto pb-4"
-            style={{ scrollSnapType: "x mandatory" }}
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex gap-5 overflow-x-auto pb-10 scrollbar-hide snap-x snap-mandatory"
           >
             {projects.map((project) => {
               const status = statusConfig[project.status];
               return (
                 <div
                   key={project.title}
-                  className="flex-shrink-0 w-80 rounded-2xl border border-white/10
-                             hover:border-violet-500/40 transition-all duration-300 group
-                             overflow-hidden"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(13,13,26,0.95) 0%, rgba(31,21,53,0.95) 100%)",
-                    scrollSnapAlign: "start",
-                  }}
+                  className="flex-shrink-0 w-[300px] sm:w-[380px] rounded-2xl border border-violet-500/[0.08] 
+                             transition-all duration-500 group overflow-hidden snap-start bg-violet-500/[0.02]"
                 >
                   {/* Screenshot preview */}
-                  <div className="relative h-44 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden bg-gray-900/50">
                     {project.preview}
-
-                    {/* Hover overlay */}
-                    <div
-                      className="absolute inset-0 bg-black/60 flex items-center
-                                    justify-center gap-3 opacity-0 group-hover:opacity-100
-                                    transition-opacity duration-200"
-                    >
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px] flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
                       {project.demo && (
                         <a
                           href={project.demo}
                           target="_blank"
-                          className="flex items-center gap-1.5 px-4 py-2 bg-violet-600
-                                     hover:bg-violet-500 text-white rounded-lg text-xs
-                                     font-medium transition-colors"
+                          className="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-xl text-xs font-semibold transition-all"
                         >
-                          <svg
-                            className="w-3 h-3"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
                           Visit
                         </a>
                       )}
@@ -156,49 +150,40 @@ export function Projects() {
                         <a
                           href={project.github}
                           target="_blank"
-                          className="flex items-center gap-1.5 px-4 py-2 bg-white/10
-                                     hover:bg-white/20 text-white rounded-lg text-xs
-                                     font-medium transition-colors border border-white/20"
+                          className="px-4 py-2 bg-white/5 hover:bg-white/10 text-white rounded-xl text-xs font-semibold transition-all border border-white/10"
                         >
-                          <svg
-                            className="w-3 h-3"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                          </svg>
                           Code
                         </a>
                       )}
                     </div>
                   </div>
 
-                  {/* Card content */}
-                  <div className="p-5">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className={`w-2 h-2 rounded-full ${status.dot}`} />
-                      <span className={`text-xs font-medium ${status.text}`}>
+                  {/* Card content - Typography Synced */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full ${status.dot}`}
+                      />
+                      <span
+                        className={`text-[10px] font-bold tracking-[0.2em] ${status.text}`}
+                      >
                         {status.label}
                       </span>
                     </div>
 
-                    <h3
-                      className="text-base font-semibold text-white mb-2
-                                   group-hover:text-violet-300 transition-colors leading-snug"
-                    >
+                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-violet-300 transition-colors tracking-tight">
                       {project.title}
                     </h3>
 
-                    <p className="text-gray-400 text-xs leading-relaxed mb-4">
+                    <p className="text-gray-400 text-[14px] leading-relaxed mb-6 opacity-80">
                       {project.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}
-                          className={`inline-block px-2.5 py-0.5 rounded-full text-xs
-                                      font-medium border ${project.tagColor}`}
+                          className={`px-2.5 py-1 rounded-lg text-[10px] font-bold tracking-wider border ${project.tagColor}`}
                         >
                           {tag}
                         </span>
@@ -210,23 +195,20 @@ export function Projects() {
             })}
           </div>
 
-          {/* Scroll hint */}
-          <p className="text-xs text-gray-600 mt-3 flex items-center gap-1.5">
-            <svg
-              className="w-3 h-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
+          {/* Simplified Progress Bar - No percentages, just the trace */}
+          <div className="mt-2 max-w-[200px] mx-auto">
+            <div className="relative w-full h-[1px] bg-white/5 rounded-full overflow-hidden">
+              <div
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-violet-600/50 via-violet-400 to-violet-600/50 shadow-[0_0_10px_rgba(139,92,246,0.4)] transition-all duration-300 ease-out"
+                style={{ width: `${scrollProgress}%` }}
               />
-            </svg>
-            Scroll to see more projects
-          </p>
+            </div>
+
+            {/* Minimalist Hint */}
+            <p className="text-center mt-3 text-[9px] uppercase tracking-[0.3em] text-gray-500 font-bold">
+              {scrollProgress > 95 ? "End of Projects" : "Swipe to View"}
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export function About() {
     "p-5 rounded-2xl bg-violet-500/[0.02] border border-violet-500/[0.08] flex flex-col justify-center transition-all duration-300 hover:bg-violet-500/[0.05] hover:border-violet-400/[0.2] hover:shadow-[0_0_20px_rgba(139,92,246,0.05)]";
 
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-32 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <div ref={headingRef} className="reveal mb-12">
