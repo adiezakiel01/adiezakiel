@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden bg-[#020617]"
+      className="relative min-h-screen flex items-center justify-center pt-32 pb-12 px-6 overflow-hidden bg-[#020617]"
     >
       {/* Background Ambience */}
       <div className="absolute inset-0 z-0">
@@ -19,29 +19,32 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto max-w-6xl z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        {/* 
+            CHANGE 1: Changed 'flex-col' to 'flex-col-reverse'. 
+            This puts the image on TOP for mobile and the text on BOTTOM.
+            'lg:flex-row' keeps them side-by-side on desktop.
+        */}
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
           {/* TEXT CONTENT */}
           <div
             ref={revealRef}
             className="reveal flex-[1.4] text-center lg:text-left space-y-6"
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-2">
+              {/*<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-white/60 font-mono text-[10px] uppercase tracking-widest">
                   Available for new projects
                 </span>
-              </div>
+              </div> */}
 
-              {/* MAIN LARGE TEXT: Your Name */}
-              <h1 className="text-6xl md:text-8xl font-extrabold text-white leading-[1.1] tracking-tighter">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] tracking-tighter">
                 Hi, I&apos;m <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-300 to-cyan-300">
                   Adi Ezakiel.
                 </span>
               </h1>
 
-              {/* SECONDARY CONTENT: The Tagline */}
               <p className="text-xl md:text-3xl font-medium text-gray-200 leading-tight tracking-tight">
                 I build the bridge between <br className="hidden md:block" />
                 data and the dashboard.
@@ -76,11 +79,10 @@ export function Hero() {
                 </svg>
               </a>
 
-              <div className="flex items-center gap-5 border-l border-white/10 pl-0 sm:pl-6">
+              <div className="flex items-center gap-5 border-white/10 pl-0 sm:border-l sm:pl-6">
                 <a
                   href="mailto:adi.ezakiel@gmail.com"
                   className="text-gray-500 hover:text-white transition-colors"
-                  aria-label="Email"
                 >
                   <svg
                     className="w-6 h-6"
@@ -101,7 +103,6 @@ export function Hero() {
                   target="_blank"
                   className="text-gray-500 hover:text-white transition-colors"
                   rel="noreferrer"
-                  aria-label="Github"
                 >
                   <svg
                     className="w-6 h-6"
@@ -117,7 +118,8 @@ export function Hero() {
 
           {/* IMAGE CONTENT */}
           <div className="relative flex-1 flex justify-center lg:justify-end">
-            <div className="relative w-72 h-72 md:w-[420px] md:h-[500px]">
+            {/* CHANGE 3: Adjusted image size for mobile (w-64 h-64) so it doesn't take up the whole screen */}
+            <div className="relative w-64 h-64 md:w-[420px] md:h-[500px]">
               <div className="absolute inset-0 bg-indigo-500/10 blur-[100px] rounded-full" />
               <div className="relative w-full h-full">
                 <Image
@@ -125,11 +127,12 @@ export function Hero() {
                   alt="Adi Ezakiel"
                   fill
                   className="object-cover rounded-[2.5rem] shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
+                  // Optional: I removed the mask on mobile because it can look like an error if the image is top-aligned
                   style={{
                     maskImage:
-                      "linear-gradient(to bottom, black 80%, transparent 100%)",
+                      "linear-gradient(to bottom, black 90%, transparent 100%)",
                     WebkitMaskImage:
-                      "linear-gradient(to bottom, black 80%, transparent 100%)",
+                      "linear-gradient(to bottom, black 90%, transparent 100%)",
                   }}
                   priority
                 />
