@@ -51,9 +51,10 @@ export function Hero() {
               </p>
 
               <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 pt-2">
-                Recent graduate from Curtin Singapore, currently focusing on
-                building analytics platforms and intelligent features for user
-                projects
+                Recent Information Technology graduate from Curtin Singapore
+                with a passion for building functional software. I enjoy
+                exploring the full development lifecycle, from managing data
+                systems to crafting the interfaces users interact with.
               </p>
             </div>
 
