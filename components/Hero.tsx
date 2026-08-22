@@ -50,7 +50,7 @@ export function Hero() {
 
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] tracking-tighter">
                 Hi, I&apos;m <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-300 to-cyan-300">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-100 drop-shadow-[0_2px_15px_rgba(167,139,250,0.3)]">
                   Adi Ezakiel.
                 </span>
               </h1>
