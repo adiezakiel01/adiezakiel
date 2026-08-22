@@ -12,10 +12,20 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-32 pb-12 px-6 overflow-hidden bg-[#020617]"
     >
       {/* Background Ambience */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-violet-600/10 blur-[140px] rounded-full" />
-        <div className="absolute bottom-0 left-0 w-[50%] h-[50%] bg-blue-600/10 blur-[140px] rounded-full" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
+
+      <div
+        className="absolute inset-0 z-0 opacity-40"
+        style={{
+          background:
+            "linear-gradient(135deg, #010510 0%, #020a1f 20%, #06102e 35%, #1a1040 55%, #3d2060 75%, #7d4b7a 100%)",
+        }}
+      />
+
+      {/* Subtle Accent Glows - Kept very faint to match the 'Left' image mood */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[10%] right-[10%] w-[30%] h-[30%] bg-violet-600/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[10%] left-[5%] w-[30%] h-[30%] bg-blue-600/5 blur-[120px] rounded-full" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-overlay" />
       </div>
 
       <div className="container mx-auto max-w-6xl z-10">
