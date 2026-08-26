@@ -12,7 +12,6 @@ export function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-32 pb-12 px-6 overflow-hidden bg-[#020617]"
     >
       {/* Background Ambience */}
-
       <div
         className="absolute inset-0 z-0 opacity-40"
         style={{
@@ -21,7 +20,7 @@ export function Hero() {
         }}
       />
 
-      {/* Subtle Accent Glows - Kept very faint to match the 'Left' image mood */}
+      {/* Subtle Accent Glows */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute top-[10%] right-[10%] w-[30%] h-[30%] bg-violet-600/5 blur-[120px] rounded-full" />
         <div className="absolute bottom-[10%] left-[5%] w-[30%] h-[30%] bg-blue-600/5 blur-[120px] rounded-full" />
@@ -29,11 +28,6 @@ export function Hero() {
       </div>
 
       <div className="container mx-auto max-w-6xl z-10">
-        {/* 
-            CHANGE 1: Changed 'flex-col' to 'flex-col-reverse'. 
-            This puts the image on TOP for mobile and the text on BOTTOM.
-            'lg:flex-row' keeps them side-by-side on desktop.
-        */}
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-20">
           {/* TEXT CONTENT */}
           <div
@@ -41,17 +35,24 @@ export function Hero() {
             className="reveal flex-[1.4] text-center lg:text-left space-y-6"
           >
             <div className="space-y-4">
-              {/*<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-white/60 font-mono text-[10px] uppercase tracking-widest">
-                  Available for new projects
-                </span>
-              </div> */}
-
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[1.1] tracking-tighter">
                 Hi, I&apos;m <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-100 drop-shadow-[0_2px_15px_rgba(167,139,250,0.3)]">
-                  Adi Ezakiel.
+                {/* 
+                  FIXED CONTAINER:
+                  Using inline-flex items-center ensures the cursor 
+                  is vertically locked to the text line.
+                */}
+                <span className="inline-flex items-center whitespace-nowrap">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-indigo-100 drop-shadow-[0_2px_15px_rgba(167,139,250,0.3)]">
+                    Adi Ezakiel.
+                  </span>
+                  {/* 
+                    THINNER WHITE CURSOR:
+                    - w-[1px] md:w-[2px] for ultimate sharpness
+                    - h-[0.75em] to match the cap-height of the font
+                    - translate-y to optically nudge it onto the text floor
+                  */}
+                  <span className="inline-block w-[1px] md:w-[2px] h-[0.75em] bg-white ml-2 md:ml-3 animate-cursor-blink shadow-[0_0_10px_rgba(255,255,255,0.7)] translate-y-[0.05em]" />
                 </span>
               </h1>
 
@@ -110,7 +111,7 @@ export function Hero() {
                   </svg>
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/adi-ezakiel"
                   target="_blank"
                   className="text-gray-500 hover:text-white transition-colors"
                   rel="noreferrer"
@@ -129,7 +130,6 @@ export function Hero() {
 
           {/* IMAGE CONTENT */}
           <div className="relative flex-1 flex justify-center lg:justify-end">
-            {/* CHANGE 3: Adjusted image size for mobile (w-64 h-64) so it doesn't take up the whole screen */}
             <div className="relative w-64 h-64 md:w-[420px] md:h-[500px]">
               <div className="absolute inset-0 bg-indigo-500/10 blur-[100px] rounded-full" />
               <div className="relative w-full h-full">
@@ -138,7 +138,6 @@ export function Hero() {
                   alt="Adi Ezakiel"
                   fill
                   className="object-cover rounded-[2.5rem] shadow-2xl transition-transform duration-700 hover:scale-[1.02]"
-                  // Optional: I removed the mask on mobile because it can look like an error if the image is top-aligned
                   style={{
                     maskImage:
                       "linear-gradient(to bottom, black 90%, transparent 100%)",
@@ -152,6 +151,22 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* CSS FOR THE ANIMATION */}
+      <style jsx>{`
+        @keyframes blink {
+          0%,
+          100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
+          }
+        }
+        .animate-cursor-blink {
+          animation: blink 1.2s step-end infinite;
+        }
+      `}</style>
     </section>
   );
 }
