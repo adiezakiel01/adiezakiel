@@ -1,7 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import Image from "next/image";
+//import Image from "next/image";
 
 const ASCII_PORTRAIT = `                              ..*.-....
 
