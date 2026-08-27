@@ -3,6 +3,64 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import Image from "next/image";
 
+const ASCII_PORTRAIT = `                              ..*.-....
+
+                          .+##############.*##**
+
+                        .########################*.
+
+                       .############################
+
+                      ##############################-
+
+                    :#################################
+
+                   ############*######################
+
+                  ##########*:+*#+#:#**##:#############
+
+                 +####*+++ ++ ++*:+++**+++:++*#########
+
+                 #### ++:#*###+:+:+++:::+:+::*+########
+
+                 +##  +::++++#####++###########*+:#####
+
+                  ## :::::#############################
+
+                  ##   :*:#+#####*  +#################
+
+                  ##      :+***+    ++#########**#:##
+
+                   *           :   :+:***:**++++:+##
+
+                   -        :::::**##*:::::  +++:*#
+
+                   ++++:::+++ +*++####*#++++:+*##*#
+
+                    :++::+*+::::**+*+:#*:::######*
+
+                    :+++::+#######################
+
+                     +++++:##+++*:+***###########
+
+                      :::+*:++:+################
+
+                       ####+*+++++:::#########
+
+                   .##*::#####*:::##############.
+
+              .#######:+::*+########################.
+
+         .############-:+:+:############################.
+
+    .+##################*++::+################:#############.
+
+ ###########################. :::**##############################.
+
+#####################################################################
+
+######################################################################`;
+
 export function Hero() {
   const revealRef = useScrollReveal();
 
@@ -129,7 +187,7 @@ export function Hero() {
           </div>
 
           {/* IMAGE CONTENT */}
-          <div className="relative flex-1 flex justify-center lg:justify-end">
+          {/*<div className="relative flex-1 flex justify-center lg:justify-end">
             <div className="relative w-64 h-64 md:w-[420px] md:h-[500px]">
               <div className="absolute inset-0 bg-indigo-500/10 blur-[100px] rounded-full" />
               <div className="relative w-full h-full">
@@ -148,6 +206,48 @@ export function Hero() {
                 />
               </div>
             </div>
+          </div>*/}
+          {/* ── Right — ASCII portrait ───────────────────── */}
+          <div className="flex items-center justify-center order-1 lg:order-2 relative group w-full lg:w-1/2 mt-8 lg:mt-0">
+            {/* Decorative glow - adjusted for mobile */}
+            <div className="absolute inset-0 bg-violet-500/15 blur-[60px] lg:blur-[100px] rounded-full" />
+
+            <pre
+              aria-label="ASCII portrait"
+              className="relative z-10 select-none pointer-events-none animate-hologram-pulse"
+              style={{
+                fontFamily: '"Courier New", Courier, monospace',
+                // 1. Slightly more compact size
+                fontSize: "min(0.95vw, 5.8px)",
+                // 2. Tighter line-height (1.1) removes the vertical "egg" stretch
+                lineHeight: "1.1",
+                // 3. Wider spacing (2.4px) makes the grid look more "digital"
+                letterSpacing: "2.4px",
+                fontWeight: "900",
+
+                // 4. Use a brighter "core" color (light lavender)
+                // This makes the dots look like actual points of light #e0e7ff
+                color: "#c4b5fd",
+
+                // 5. The "Violet Aura"
+                // The first shadow is a sharp violet, the second is a soft indigo bloom
+                textShadow: `
+      0 0 4px rgba(167, 139, 250, 0.7),
+      0 0 12px rgba(129, 140, 248, 0.3)
+    `,
+
+                whiteSpace: "pre",
+                opacity: 0.8,
+
+                // 6. Smoother fade-out
+                maskImage:
+                  "linear-gradient(to bottom, black 60%, transparent 95%)",
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 60%, transparent 95%)",
+              }}
+            >
+              {ASCII_PORTRAIT}
+            </pre>
           </div>
         </div>
       </div>
@@ -165,6 +265,21 @@ export function Hero() {
         }
         .animate-cursor-blink {
           animation: blink 1.2s step-end infinite;
+        }
+        @keyframes hologram {
+          0%,
+          100% {
+            opacity: 0.8;
+            filter: brightness(1);
+          }
+          50% {
+            opacity: 0.9;
+            filter: brightness(1.2);
+          }
+        }
+
+        .animate-hologram-pulse {
+          animation: hologram 4s ease-in-out infinite;
         }
       `}</style>
     </section>
