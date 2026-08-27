@@ -3,63 +3,36 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 //import Image from "next/image";
 
-const ASCII_PORTRAIT = `                              ..*.-....
-
-                          .+##############.*##**
-
-                        .########################*.
-
-                       .############################
-
-                      ##############################-
-
-                    :#################################
-
-                   ############*######################
-
-                  ##########*:+*#+#:#**##:#############
-
-                 +####*+++ ++ ++*:+++**+++:++*#########
-
-                 #### ++:#*###+:+:+++:::+:+::*+########
-
-                 +##  +::++++#####++###########*+:#####
-
-                  ## :::::#############################
-
-                  ##   :*:#+#####*  +#################
-
-                  ##      :+***+    ++#########**#:##
-
-                   *           :   :+:***:**++++:+##
-
-                   -        :::::**##*:::::  +++:*#
-
-                   ++++:::+++ +*++####*#++++:+*##*#
-
-                    :++::+*+::::**+*+:#*:::######*
-
-                    :+++::+#######################
-
-                     +++++:##+++*:+***###########
-
-                      :::+*:++:+################
-
-                       ####+*+++++:::#########
-
-                   .##*::#####*:::##############.
-
-              .#######:+::*+########################.
-
-         .############-:+:+:############################.
-
-    .+##################*++::+################:#############.
-
- ###########################. :::**##############################.
-
-#####################################################################
-
-######################################################################`;
+const ASCII_PORTRAIT = `                                            #@@@#@@@@@#@@@@@@@#
+                                #@@@#######@@@@@#@##@#
+                  #@@@@@@@@@@@@%@.+.++%:#+..??%%@@S*###
+                             S@,:,.+++:::...:.+::::.::@,%#
+       #@@@@@@@@@@#@@@@@@@@@.,++.;,:.,.,..:...+..:::.:.,?,?
+        #@@@@@@@@@@@@@@@@@%.,#+,..::,.,....:+...+,..:.,:,.+##
+                        #+,+,+.,:..,.+.:..+:++:....:..:....:%
+      #@@@@@@@@@@@@@@#@%.:.....:..,.,,.,.+,...+..+....:,..,::\`
+                     #.,....,.+.*#%@@?.,*%+#@##@+#@.+..:   ..?
+                     ,:::...+@@##*%%%,@@###@##@#@##@##;.   . .#
+   #@@@@@@@@@@@@@@@@.::.,;###@@@@@@@@%%@@#@#@@@@@@@@#@@;.     ?@@@@@@@@@@#
+              #@@@@#....##@@%#@%@@@####@@#@@@#@@##@@@@@@..
+                    ...#@@@@%@+@,;+####@@%#%##%%#?%%%#@##@   .
+     #@@@@@@@@@@@@@@...@@@@@@##%##++########+.+++*@++##@#@.. .,
+              #@@@@@,,+@@@##%?,,..,:++#@@@@++.+###@++#####... #@@@@@#@@@@@@@#
+                    #:?@@@@@#@@@*@.++@#@@@@;+.*   *.:+####   ,@@@@@@@@@@#
+                     ,+@@@@@@@@@@@@#@@@@@@@@+###++++@@##@#  *
+                     ##@@@@@@@@@@@@@@@@@@@@@##@@@@@@@@#@#@.,
+                      #@@@@@@@@@@@@@@%%@@%##@@#@@@@@@@###%+
+                      #@@@@@@@@@@@@@@..++,,,+##@@@@#@#@@#%?@@@@@@@@@@@@@@@@@#
+                                        #@@+##@@@########%#@@@@@@@@@@@@@@@@@@@@#
+                           #@@#@@@%%#%%%@%%@###@#+#+#####
+                             ##@+??:+?%#.+.:??+++++#+#####
+                          #@#@@@@@@##@@@#@@@@+#++######S
+            #@@@@@@@@@@@@@@####@##@@@..:?::.+##@#++#+#,
+                          #@#######@##@@@@######+..+,#
+    #@@@@@@@@@@@@@@@@@@%?S%@@@.?##@###@##@####+....++?S
+          #@@@@@@@#%?..:.@#@@@@@..:?????::++:::::..+##@ .?%
+         %@@@#%S,.,......@@@@@@@@@....    . ..,...+++##.    .?%
+        #%S:.+..::.:.::..?@@@@#@@@#..+........+;+++++#%...      .?%`;
 
 export function Hero() {
   const revealRef = useScrollReveal();
@@ -208,42 +181,43 @@ export function Hero() {
             </div>
           </div>*/}
           {/* ── Right — ASCII portrait ───────────────────── */}
-          <div className="flex items-center justify-center order-1 lg:order-2 relative group w-full lg:w-1/2 mt-8 lg:mt-0">
-            {/* Decorative glow - adjusted for mobile */}
-            <div className="absolute inset-0 bg-violet-500/15 blur-[60px] lg:blur-[100px] rounded-full" />
+          <div className="flex items-center justify-center order-1 lg:order-2 relative w-full lg:w-1/2 mt-4 lg:mt-0 overflow-visible">
+            {/* Larger Background Glow to match the bigger ASCII */}
+            <div className="absolute inset-0 bg-violet-500/10 blur-[120px] rounded-full scale-150" />
 
             <pre
               aria-label="ASCII portrait"
-              className="relative z-10 select-none pointer-events-none animate-hologram-pulse"
+              className="relative z-10 select-none pointer-events-none animate-hologram-pulse lg:scale-125 origin-center"
               style={{
                 fontFamily: '"Courier New", Courier, monospace',
-                // 1. Slightly more compact size
-                fontSize: "min(0.95vw, 5.8px)",
-                // 2. Tighter line-height (1.1) removes the vertical "egg" stretch
-                lineHeight: "1.1",
-                // 3. Wider spacing (2.4px) makes the grid look more "digital"
-                letterSpacing: "2.4px",
-                fontWeight: "900",
+                /* 
+         RESPONSIVE SIZE:
+         - 4.5px minimum (so it's never invisible)
+         - 2.2vw (scales with screen width)
+         - 10px maximum (big and bold on desktop)
+      */
+                fontSize: "clamp(4.5px, 2.2vw, 10px)",
 
-                // 4. Use a brighter "core" color (light lavender)
-                // This makes the dots look like actual points of light #e0e7ff
+                // Proportions to prevent squashing
+                lineHeight: "1.25",
+                letterSpacing: "0.2px",
+
+                fontWeight: "900",
                 color: "#c4b5fd",
 
-                // 5. The "Violet Aura"
-                // The first shadow is a sharp violet, the second is a soft indigo bloom
                 textShadow: `
-      0 0 4px rgba(167, 139, 250, 0.7),
-      0 0 12px rgba(129, 140, 248, 0.3)
-    `,
+        0 0 5px rgba(167, 139, 250, 0.4),
+        0 0 15px rgba(167, 139, 250, 0.1)
+      `,
 
                 whiteSpace: "pre",
                 opacity: 0.8,
 
-                // 6. Smoother fade-out
+                // Smooth mask fade at the bottom
                 maskImage:
-                  "linear-gradient(to bottom, black 60%, transparent 95%)",
+                  "linear-gradient(to bottom, black 75%, transparent 100%)",
                 WebkitMaskImage:
-                  "linear-gradient(to bottom, black 60%, transparent 95%)",
+                  "linear-gradient(to bottom, black 75%, transparent 100%)",
               }}
             >
               {ASCII_PORTRAIT}
